@@ -22,6 +22,15 @@ function View() {
 
   const [loading, setLoading] = useState(false)
 
+  const getData = async () => {
+    setLoading(true);
+    const data = await getDocs(dbInstance)
+    setArray(data.docs.map((item) => {
+      return { ...item.data(), id: item.id }
+    }))
+    setLoading(false);
+
+  };
 
   let history = useHistory();
 
