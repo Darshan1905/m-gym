@@ -44,7 +44,7 @@ function View() {
 
 
 
-  }, [history])
+  }, [getdata()])
 
   // const auth = getAuth();
   const dbInstance = collection(database, 'users')

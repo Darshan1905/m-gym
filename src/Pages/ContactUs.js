@@ -2,14 +2,15 @@ import "../App.css";
 import { useState, useEffect } from "react";
 import { Form, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import { app, database } from "../firebaseConfig";
-import { getAuth } from "firebase/auth";
+import { database } from "../firebaseConfig";
+// import { getAuth } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
 const ContactUs = () => {
 
+  let history = useHistory();
 
 
   useEffect(() => {
@@ -49,7 +50,6 @@ const ContactUs = () => {
       });
   };
 
-  let history = useHistory();
 
   return (
     <>

@@ -25,6 +25,7 @@ const Login = () => {
     setData({ ...data, ...inputs })
   }
 
+  let history = useHistory();
 
   useEffect(() => {
     const token = localStorage.getItem("user-info")
@@ -59,7 +60,6 @@ const Login = () => {
   }
 
 
-  let history = useHistory();
 
 
   return (
