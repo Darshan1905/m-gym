@@ -34,21 +34,12 @@ function View() {
 
   let history = useHistory();
 
-  useEffect(() => {
+  useEffect((getData = getData) => {
 
     const token = localStorage.getItem("user-info")
     if (token == null) {
       history.push("/login");
     }
-    const getData = async () => {
-      setLoading(true);
-      const data = await getDocs(dbInstance)
-      setArray(data.docs.map((item) => {
-        return { ...item.data(), id: item.id }
-      }))
-      setLoading(false);
-
-    };
     getData()
   }, [history])
 
