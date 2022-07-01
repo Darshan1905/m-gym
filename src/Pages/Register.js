@@ -12,6 +12,7 @@ import {
 
 const Login = () => {
 
+  let history = useHistory();
 
 
   useEffect(() => {
@@ -64,7 +65,6 @@ const Login = () => {
   }
 
 
-  let history = useHistory();
 
 
   return (

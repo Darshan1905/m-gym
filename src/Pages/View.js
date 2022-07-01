@@ -39,7 +39,7 @@ function View() {
     if (token == null) {
       history.push("/login");
     }
-    getData()
+    getData();
   }, [history])
 
   // const auth = getAuth();
