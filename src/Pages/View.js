@@ -39,8 +39,8 @@ function View() {
     if (token == null) {
       history.push("/login");
     }
-    getData();
-  }, [history])
+    getData()
+  }, [getData])
 
   // const auth = getAuth();
   const dbInstance = collection(database, 'users')
