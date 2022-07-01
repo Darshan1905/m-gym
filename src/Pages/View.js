@@ -40,7 +40,7 @@ function View() {
       history.push("/login");
     }
     getData()
-  })
+  }, [history])
 
   // const auth = getAuth();
   const dbInstance = collection(database, 'users')

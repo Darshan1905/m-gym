@@ -23,7 +23,7 @@ const Login = () => {
 
       history.push("/register");
     }
-  })
+  }, [history])
 
 
   const [data, setData] = useState({
