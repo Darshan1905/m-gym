@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState, Fragment } from "react";
+import React from "react";
 import { FaHome } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi"
 import { Link, NavLink } from "react-router-dom/";
@@ -7,15 +6,14 @@ import { useHistory } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { Button } from "bootstrap";
 
 function Header() {
   const history = useHistory();
 
 
-  const handleOut = () =>{
+  const handleOut = () => {
 
-    
+
     localStorage.removeItem("user-info")
     history.push("/login");
   }
@@ -35,11 +33,11 @@ function Header() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto"></Nav>
             <Nav>
-             
+
 
               {token ? (
                 <>
-                
+
                   <Nav.Link>
                     <NavLink to="/view" className="Rightmenu">
                       Dashboard
@@ -51,37 +49,37 @@ function Header() {
                     </NavLink>
                   </Nav.Link>
                   {/* <Nav.Link> */}
-                  
-                  <button onClick={handleOut} > <BiLogOut  size={25}  /> </button>
+
+                  <button onClick={handleOut} > <BiLogOut size={25} /> </button>
 
                   {/* </Nav.Link> */}
                 </>
               ) : (
                 <>
-                <Nav.Link>
-                <Link to="/" className="Rightmenu">
-                  <FaHome size={30} className="pb-2" />
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <NavLink to="/aboutus" className="Rightmenu">
-                  About Us
-                </NavLink>
-              </Nav.Link>
-              <Nav.Link>
-                <NavLink to="/contactus" className="Rightmenu">
-                  Contact Us
-                </NavLink>
-              </Nav.Link>
+                  <Nav.Link>
+                    <Link to="/" className="Rightmenu">
+                      <FaHome size={30} className="pb-2" />
+                    </Link>
+                  </Nav.Link>
+                  <Nav.Link>
+                    <NavLink to="/aboutus" className="Rightmenu">
+                      About Us
+                    </NavLink>
+                  </Nav.Link>
+                  <Nav.Link>
+                    <NavLink to="/contactus" className="Rightmenu">
+                      Contact Us
+                    </NavLink>
+                  </Nav.Link>
                   <Nav.Link>
                     <NavLink to="/login" className="Rightmenu">
-                     Admin Login
+                      Admin Login
                     </NavLink>
                   </Nav.Link>
                 </>
               )}
 
-              
+
             </Nav>
           </Navbar.Collapse>
         </Container>

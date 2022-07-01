@@ -1,6 +1,4 @@
 import React from "react";
-import { ListGroup } from "react-bootstrap";
-
 const AboutSection = () => {
   return (
     <div className="container-fluid pb-5 bg ">
@@ -48,10 +46,10 @@ const AboutSection = () => {
                 </div>
               
             </div> */}
-          </div>
         </div>
       </div>
- 
+    </div>
+
   );
 };
 

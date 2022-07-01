@@ -11,28 +11,28 @@ const AboutUs = () => {
     let history = useHistory();
 
     useEffect(() => {
-          
+
         const token = localStorage.getItem("user-info")
-        if(token != null){
-          history.push("/login");
-        }else{
-    
-        history.push("/aboutus");
+        if (token != null) {
+            history.push("/login");
+        } else {
+
+            history.push("/aboutus");
         }
-        },[])
+    }, [history])
 
 
     return (
-        
+
         <div>
-        <Header/>
-        <AboutSection/>
-        <OurPrograms/>
-        <Footer/>
+            <Header />
+            <AboutSection />
+            <OurPrograms />
+            <Footer />
         </div>
     )
 
-  
+
 }
 
 export default AboutUs;

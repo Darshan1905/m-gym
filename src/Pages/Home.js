@@ -15,33 +15,33 @@ import Footer from "../Components/Footer";
 
 const Home = () => {
 
-    let history = useHistory();
+  let history = useHistory();
 
-    useEffect(() => {
-          
-        const token = localStorage.getItem("user-info")
-        if(token == null){
-          history.push("/");
-        }else{
-    
-        history.push("/view");
-        }
-        },[])
-      
+  useEffect(() => {
 
-    return (
-       <div>
-    <Header/>
-    <Banner/>
-    <AboutSection/>
-    <JoinUs/>
-    <Membership/>
-    <OurPrograms/>
-    <Footer/>
+    const token = localStorage.getItem("user-info")
+    if (token == null) {
+      history.push("/");
+    } else {
+
+      history.push("/view");
+    }
+  }, [history])
+
+
+  return (
+    <div>
+      <Header />
+      <Banner />
+      <AboutSection />
+      <JoinUs />
+      <Membership />
+      <OurPrograms />
+      <Footer />
     </div>
-    )
+  )
 
-  
+
 }
 
 export default Home;

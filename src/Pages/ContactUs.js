@@ -1,5 +1,5 @@
 import "../App.css";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Form, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { app, database } from "../firebaseConfig";
@@ -10,18 +10,18 @@ import Footer from "../Components/Footer";
 
 const ContactUs = () => {
 
-  
+
 
   useEffect(() => {
-        
-      const token = localStorage.getItem("user-info")
-      if(token != null){
-        history.push("/login");
-      }else{
-  
+
+    const token = localStorage.getItem("user-info")
+    if (token != null) {
+      history.push("/login");
+    } else {
+
       history.push("/contactus");
-      }
-      },[])
+    }
+  }, [history])
 
 
   const [data, setData] = useState({
@@ -30,7 +30,7 @@ const ContactUs = () => {
     password: "",
   });
 
-  const auth = getAuth();
+  // const auth = getAuth();
   const dbInstance = collection(database, "users");
   const handleInputs = (event) => {
     let inputs = { [event.target.name]: event.target.value };
@@ -53,54 +53,54 @@ const ContactUs = () => {
 
   return (
     <>
-    <Header/>
-    <div className="App">
-      <Container className="p-5  text-center ">
-        <div className="formdata">
-          <div className="card p-5 bg-black  ">
-            <Form onSubmit={handleSubmit}>
-              <input
-                className="input"
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Enter Name"
-                required
-                onChange={(event) => handleInputs(event)}
-              ></input>
+      <Header />
+      <div className="App">
+        <Container className="p-5  text-center ">
+          <div className="formdata">
+            <div className="card p-5 bg-black  ">
+              <Form onSubmit={handleSubmit}>
+                <input
+                  className="input"
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Enter Name"
+                  required
+                  onChange={(event) => handleInputs(event)}
+                ></input>
 
-              <input
-                className="input"
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter email"
-                required
-                onChange={(event) => handleInputs(event)}
-              ></input>
+                <input
+                  className="input"
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Enter email"
+                  required
+                  onChange={(event) => handleInputs(event)}
+                ></input>
 
-              <input
-                className="input"
-                id="password"
-                name="password"
-                type="password"
-                placeholder="Password"
-                required
-                onChange={(event) => handleInputs(event)}
-              ></input>
+                <input
+                  className="input"
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  required
+                  onChange={(event) => handleInputs(event)}
+                ></input>
 
-              <br />
-              <br />
+                <br />
+                <br />
 
-              <button type="submit" className="fbutton">
-                Add Data
-              </button>
-            </Form>
+                <button type="submit" className="fbutton">
+                  Add Data
+                </button>
+              </Form>
+            </div>
           </div>
-        </div>
-      </Container>
-    </div>
-    <Footer/>
+        </Container>
+      </div>
+      <Footer />
     </>
   );
 };

@@ -1,114 +1,113 @@
 import '../App.css';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Form,Container,Card } from 'react-bootstrap';
+import { Form, Container, Card } from 'react-bootstrap';
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
-import { getAuth,
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword, 
-  getAdditionalUserInfo} from 'firebase/auth';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import {
+  getAuth,
+  signInWithEmailAndPassword
+} from 'firebase/auth';
 
 
 const Login = () => {
 
-  const [data,setData] = useState({
+  const [data, setData] = useState({
     email: '',
     password: ''
 
   })
   const auth = getAuth();
   const handleInputs = (event) => {
-  let inputs = {[event.target.name] : event.target.value}
+    let inputs = { [event.target.name]: event.target.value }
 
-  setData({ ...data, ...inputs})
+    setData({ ...data, ...inputs })
   }
 
 
   useEffect(() => {
     const token = localStorage.getItem("user-info")
-  
-    if(token != null){
+
+    if (token != null) {
       history.push("/view");
     }
-     
-    },[])
+
+  }, [history])
 
 
-  
+
 
 
   const handleSubmit = async (event) => {
-  
+
     event.preventDefault();
     signInWithEmailAndPassword(auth, data.email, data.password)
-    .then((response) =>  {
-     
-      localStorage.setItem("user-info", "data")
-      history.push("/view");
-     
-    })
- 
-    .catch((err) => {
-       alert("Id or Password is Wrong")
-    })
-  
-    
-  
+      .then((response) => {
+
+        localStorage.setItem("user-info", "data")
+        history.push("/view");
+
+      })
+
+      .catch((err) => {
+        alert("Id or Password is Wrong")
+      })
+
+
+
   }
-  
+
 
   let history = useHistory();
 
 
   return (
     <>
-     <Header/>
-    
-
-<Container className='p-5 text-center'  >
-
-<div className="formdata">
-         <div className="Card p-5 bg-black  "> 
-          <Form onSubmit={handleSubmit}>
-          <Card.Title><p className='text-white cardhead'>Login</p></Card.Title>
-            <input
-              className="input"
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter your email"
-              required
-              onChange={(event) => handleInputs(event)}
-            ></input>
+      <Header />
 
 
-            <input
-              className="input"
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-              required
-              onChange={(event) => handleInputs(event)}
-            ></input>
+      <Container className='p-5 text-center'  >
 
-            <br />
-            <br />
+        <div className="formdata">
+          <div className="Card p-5 bg-black  ">
+            <Form onSubmit={handleSubmit}>
+              <Card.Title><p className='text-white cardhead'>Login</p></Card.Title>
+              <input
+                className="input"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                required
+                onChange={(event) => handleInputs(event)}
+              ></input>
 
-            <button type="submit" className="fbutton">
-              Sign In
-            </button>
-          </Form>
+
+              <input
+                className="input"
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+                required
+                onChange={(event) => handleInputs(event)}
+              ></input>
+
+              <br />
+              <br />
+
+              <button type="submit" className="fbutton">
+                Sign In
+              </button>
+            </Form>
+          </div>
         </div>
-        </div>
 
-</Container>
-<Footer/>
-</>
-   
+      </Container>
+      <Footer />
+    </>
+
   );
 }
 
