@@ -22,15 +22,7 @@ function View() {
 
   const [loading, setLoading] = useState(false)
 
-  const getData = async () => {
-    setLoading(true);
-    const data = await getDocs(dbInstance)
-    setArray(data.docs.map((item) => {
-      return { ...item.data(), id: item.id }
-    }))
-    setLoading(false);
 
-  };
   let history = useHistory();
 
   useEffect(() => {
@@ -39,8 +31,17 @@ function View() {
     if (token == null) {
       history.push("/login");
     }
+    const getData = async () => {
+      setLoading(true);
+      const data = await getDocs(dbInstance)
+      setArray(data.docs.map((item) => {
+        return { ...item.data(), id: item.id }
+      }))
+      setLoading(false);
+
+    };
     getData()
-  }, [getData, history])
+  }, [history])
 
   // const auth = getAuth();
   const dbInstance = collection(database, 'users')
